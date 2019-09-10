@@ -1,0 +1,37 @@
+.header{
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 40px;
+}
+
+.row{
+  margin-top: 10px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.navbar-link {
+  cursor: pointer;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.card-title {
+  display: flex;
+  justify-content: center;
+}
+
+.card-text {
+  text-align: center;
+}
+
+

@@ -1,0 +1,31 @@
+.header{
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 40px;
+}
+
+.row{
+  margin-top: 10px;
+}
+
+.error{
+  color: red;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.btn-google {
+  width: 60%;
+}
+
+.buttons-sub {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
