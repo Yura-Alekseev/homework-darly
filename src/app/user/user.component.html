@@ -7,18 +7,19 @@
 
 <div class="wrapper">
     <div class="card">
-      <div *ngIf='user.provider != "password"'class="card-body">
+      <div *ngIf='user.provider != "password"' class="card-body">
         <h4 class="card-title">{{user.name}}</h4>
         <p class="card-text">Congratulations! You are logged in with Google account</p>
       </div>
-      <div *ngIf='user.provider == "password"'class="card-body">
+      <div *ngIf='user.provider == "password"' class="card-body">
         <form [formGroup]="profileForm">
           <div class="form-group">
             <label>Your name</label>
             <input type="text" formControlName="name" class="form-control" required>
           </div>
         </form>
-        <a (click)="save(profileForm.value)" class="btn btn-primary">Save</a>
+        <button (click)="save(profileForm.value); status()"  class="btn btn-primary">Save</button>
+        <p class="message-successful" *ngIf="statusClicked === true">Name was saved successfully</p>
       </div>
     </div>
 </div>

@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
-import { AuthService } from '../core/auth.service';
-import { Router, Params } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {Component} from '@angular/core';
+import {AuthService} from '../core/auth.service';
+import {Router, Params} from '@angular/router';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -20,34 +20,45 @@ export class RegisterComponent {
     private fb: FormBuilder
   ) {
     this.createForm();
-   }
+  }
 
-   createForm() {
-     this.registerForm = this.fb.group({
-       email: ['', Validators.required ],
-       password: ['', Validators.required]
-     });
-   }
+  redirectToLoginPage() {
+    this.router.navigate(['/login']);
+  }
 
-   tryGoogleLogin() {
-     this.authService.doGoogleLogin()
-     .then(res => {
-       this.router.navigate(['/user']);
-     }, err => console.log(err)
-     );
-   }
+  createForm() {
+    this.registerForm = this.fb.group({
+      email: ['', Validators.required],
+      password: ['', Validators.required]
+    });
+  }
 
-   tryRegister(value) {
-     this.authService.doRegister(value)
-     .then(res => {
-       console.log(res);
-       this.errorMessage = '';
-       this.successMessage = 'Your account has been created';
-     }, err => {
-       console.log(err);
-       this.errorMessage = err.message;
-       this.successMessage = '';
-     });
-   }
+  tryGoogleLogin() {
+    this.authService.doGoogleLogin()
+      .then(res => {
+          this.router.navigate(['/user']);
+        }, err => console.log(err)
+      );
+  }
+
+  tryRegister(value) {
+    this.authService.doRegister(value)
+      .then(res => {
+        console.log(res);
+        this.errorMessage = '';
+        this.successMessage = 'Your account has been created';
+        this.authService.doLogin(value)
+          .then(res => {
+            this.router.navigate(['/user']);
+          }, err => {
+            console.log(err);
+            this.errorMessage = err.message;
+          });
+      }, err => {
+        console.log(err);
+        this.errorMessage = err.message;
+        this.successMessage = '';
+      });
+  }
 
 }

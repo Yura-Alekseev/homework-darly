@@ -44,4 +44,9 @@ export class LoginComponent {
       this.errorMessage = err.message;
     });
   }
+
+  redirectToCreatePage() {
+    this.router.navigate(['/register']);
+  }
+
 }

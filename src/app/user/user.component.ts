@@ -57,4 +57,10 @@ export class UserComponent implements OnInit{
       console.log('Logout error', error);
     });
   }
+
+  statusClicked = false;
+
+  status() {
+    this.statusClicked = true;
+  }
 }
